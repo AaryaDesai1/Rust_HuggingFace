@@ -1,11 +1,7 @@
 // Writing a main.rs that uses a hugging face llm model
 use std::env;
-use std::fs::File;
-use std::io::{self, BufRead};
-use std::path::Path;
-
-use tch::nn::ModuleT;
-use tch::{nn, Device, Tensor};
+use std::io;
+use tch::{Device, Tensor};
 
 fn main() -> io::Result<()> {
     let args: Vec<String> = env::args().collect();
@@ -15,7 +11,7 @@ fn main() -> io::Result<()> {
     }
     let model_path = &args[1];
     let device = Device::cuda_if_available();
-    let vs = nn::VarStore::new(device);
+    let vs = tch::nn::VarStore::new(device);
     let model = tch::BertConfig::new(&vs.root()).load(model_path)?;
 
     let mut input = Tensor::of_slice(&[0i64]);
@@ -24,5 +20,3 @@ fn main() -> io::Result<()> {
     println!("{:?}", output);
     Ok(())
 }
-
-
