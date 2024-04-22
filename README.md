@@ -38,5 +38,15 @@ You can check whether the environment variable has been set by running the follo
 ```bash
 echo $LIBTORCH
 ```                         
+Do the same for other libtorch variables, namely, `LIBTORCH_USE_PYTORCH`, `LIBTORCH_INCLUDE`, and `LIBTORCH_LIB`
+
+Then I got some more issues: 
+
+<img width="1216" alt="image" src="https://github.com/AaryaDesai1/Facial_Emotion_Recognition/assets/143753050/249558d9-ac7d-45da-a781-91b008e1a68f">
+
+I tried to solve this issue by running the following command: 
+```bash
+export LIBTORCH_BYPASS_VERSION_CHECK=1
+```
 
 After this, I tried to build the project again, and, but still did not work. 
